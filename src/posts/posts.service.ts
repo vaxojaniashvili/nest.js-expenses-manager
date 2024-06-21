@@ -2,17 +2,17 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 
 @Injectable()
 export class PostsService {
-  private readonly data = [{ id: 1, name: 'vaxo', email: 'vaxo@gmail.com' }];
+  private readonly data = [{ id: 1, title: 'Engine', description: 'This engine is 5.5 kompressor' }];
   postUsers(body) {
-    const { name, email } = body;
+    const { title, description } = body;
     const createdUserTime = new Date().toLocaleString();
     if (!body) {
       throw new HttpException('User not found', HttpStatus.NOT_FOUND);
     }
     const user = {
       id: this.data.length + 1,
-      name: name,
-      email: email,
+      title: title,
+      description: description,
       createdTime: createdUserTime,
     };
     this.data.push(user);
